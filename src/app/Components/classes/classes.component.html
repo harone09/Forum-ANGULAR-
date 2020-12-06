@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<ng-template #template>
+    <div class="modal-header">
+        <h3 class="modal-title" style="float: center;color:rgba(0, 81, 255, 0.692);">LIST OF NEW STUDENTS</h3>
+        <span (click)="modalRef.hide()" class="w3-button w3-display-topright">&times;</span>
+    </div>
+    <ul class="w3-ul w3-card-4">
+        <li class="w3-bar" *ngFor="let item of Listee">
+            <span (click)="deletelist(item.id)" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+            <span (click)="addLFS(item.id,item.name,item.ide,item.idc)" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">✓</span>
+            <div class="w3-bar-item">
+                <span class="w3-large">{{item.name}}</span><br>
+            </div>
+        </li>
+
+    </ul>
+
+</ng-template>
+
+<style>
+    .card {
+        background: #fff;
+        border-radius: 2px;
+        display: inline-block;
+        height: auto;
+        margin: 1rem;
+        position: relative;
+        width: 260px;
+    }
+    
+    .card-1 {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    }
+    
+    .card-1:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+</style>
+
+
+
+<div class="row" style="margin-right: 10px; margin-left: 10px;" *ngIf="me.role=='Professor'">
+
+    <div class="panel panel-default ">
+        <div class="panel-body">
+
+            <div class="card card-1" *ngFor="let item of classes" title="{{item.id}}">
+
+                <div class="card-body">
+                    <h3 class="card-title">{{item.name}}</h3>
+                    <hr>
+                    <p class="card-text" style="padding: 10px;">{{item.description}}</p>
+                    <span title="{{item.members}}" [style.color]="getColor(item.id)" (click)="openModl(template,item.id); getListatt(item.id)" class="glyphicon glyphicon-user" style="font-size: 25px;margin-right: 20px;"></span>
+                    <span (click)="deleteClass(item.id)" class="w3-button w3-display-topright" class="glyphicon glyphicon-trash" style="font-size: 25px;margin-left: 20px;"></span>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row" style="margin-right: 10px; margin-left: 10px;" *ngIf="me.role=='Student'">
+
+    <div class="panel panel-default ">
+        <div class="panel-body">
+
+            <div class="card card-1" *ngFor="let item of filteredClasse">
+
+                <div class="card-body">
+                    <h3 class="card-title">{{item.name}}</h3>
+                    <hr>
+                    <p class="card-text" style="padding: 10px;">{{item.description}}</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

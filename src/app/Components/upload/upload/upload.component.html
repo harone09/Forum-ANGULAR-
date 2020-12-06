@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+
+
+<!---->
+<div>
+
+</div>
+<select name="Classes" class="form-group" #clsId>
+                    <option value="default">--Classes--</option>
+                    <option *ngFor="let cls of filteredClasse" value=" {{cls.id}} "> {{cls.name}} </option>
+                </select>
+
+
+<textarea rows="5" cols="70" placeholder="Your Publication..." #pubscont></textarea>
+<div id="drop-area">
+    <div class="row" style="margin-bottom:15px;">
+        <div class="col-md-3">
+            <input type="file" #file placeholder="Choose file" (change)="selectFile(file.files)" style="display:none;" multiple>
+            <button type="button" class="btn btn-primary " (click)="file.click()">Select Files</button>
+
+        </div>
+        <div class="col-md-2"><button type="button" class="btn btn-success " (click)="uploadFiles()">Upload All</button></div>
+        <div class="col-md-7">
+            <span class="upload" *ngIf="progress > 0">
+                {{progress}}%
+            </span>
+            <span class="upload" *ngIf="message">
+                {{message}}
+            </span>
+        </div>
+    </div>
+    <div>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Files</th>
+                    <th>Progress</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of filesToUpload ">
+                    <td><a class="text" title="{{f.name}}">{{f.name}}</a></td>
+                    <td>
+                    </td>
+                    <td><button type="button" class="btn btn-primary fa fa-upload " style="margin-right: 5px;" (click)="uploadFile(f)"></button>
+                        <button type="button" class="btn btn-danger fa fa-trash " (click)="removeFile(f)"></button></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+
+<!---->
+<button type="button" class="btn btn-primary " style="float: right;" (click)="Publish(clsId.value,pubscont.value);pubscont.value='';clsId.value='default'">Publish</button>

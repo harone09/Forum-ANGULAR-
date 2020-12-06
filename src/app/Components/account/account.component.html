@@ -1,0 +1,80 @@
+<div class="well  col-sm-12 center d-flex ">
+
+    <form style="margin: 0 auto; 
+    width:250px;">
+        <div class="form-group input-group">
+            <h3>Account Settings :</h3>
+            <br>
+        </div>
+
+        <div class=" form-group input-group ">
+            <div class="text-left"> Login:</div>
+
+            <div class="input-group-prepend ">
+                <span class="input-group-text "> <i class="fa fa-user "></i> </span>
+                <input name=" " class="form-control " [(ngModel)]="me.login" [ngModelOptions]="{standalone: true}" placeholder=" Login " type="text " value="{{me.login}} ">
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group input-group ">
+            <div class="text-left "> Name:</div>
+
+            <div class="input-group-prepend ">
+                <span class="input-group-text "> <i class="fa fa-user "></i> </span>
+                <input name=" " class="form-control " [(ngModel)]="me.name " [ngModelOptions]="{standalone: true}" placeholder="Full name" type="text" value="{{me.name}}">
+
+            </div>
+        </div>
+
+        <!-- form-group// -->
+        <div class="form-group input-group">
+            <div class="text-left"> Email:</div>
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                <input name="" class="form-control" [(ngModel)]="me.email" [ngModelOptions]="{standalone: true}" placeholder=" Email address " type="email " value="{{me.email}} ">
+            </div>
+        </div>
+        <!-- form-group// -->
+        <div class="form-group input-group ">
+            <div class="text-left "> Phone Number:</div>
+            <div class="input-group-prepend ">
+
+                <span class="input-group-text "> <i class="fa fa-phone "></i> </span>
+
+                <input name=" " class="form-control " [(ngModel)]="me.phone " [ngModelOptions]="{standalone: true}" placeholder="Phone number " type="text " value="{{me.phone}} ">
+            </div>
+
+        </div>
+        <!-- form-group// -->
+
+
+        <!--
+        <div class="form-group input-group ">
+            <div class="input-group-prepend ">
+                <span class="input-group-text "> <i class="fa fa-lock "></i> </span>
+                <input class="form-control " placeholder="Create password " type="password ">
+
+            </div>
+        </div>
+  
+        <div class="form-group input-group ">
+            <div class="input-group-prepend ">
+                <span class="input-group-text "> <i class="fa fa-lock "></i> </span>
+                <input class="form-control " placeholder="Repeat password " type="password ">
+
+            </div>
+        </div>
+        -->
+
+
+        <!-- form-group// -->
+        <br>
+        <div class="form-group ">
+            <button (click)="editUser() " class="btn btn-primary btn-block "> Save Changes  </button>
+        </div>
+        <!-- form-group// -->
+    </form>
+</div>

@@ -1,0 +1,120 @@
+<style>
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+</style>
+
+
+
+
+<div class="well">
+    <a routerLink="/Classes">Classes </a>
+    <div class="dropdown">
+
+        <i class="fa fa-ellipsis-h" style="color: cornflowerblue;"></i>
+
+        <div class="dropdown-content">
+            <a (click)="openModel(template)" *ngIf="me.role=='Professor'">NEW CLASS</a>
+            <a (click)="openModel(template2)" *ngIf="me.role=='Student'">JOIN</a>
+
+
+        </div>
+    </div>
+    <div class="text-left">
+        <ul *ngFor="let cls of filteredClasse">
+            <li>
+                <a routerLink="/Publications/{{cls.id}}" class="text-black-50"> {{cls.name}} </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+
+<ng-template #template>
+    <div id="id01" class="modal-header">
+
+        <h3 class="modal-title pull-left">Create New Class</h3>
+        <span (click)="modalRef.hide()" class="w3-button w3-display-topright">&times;</span>
+        <!--  <button type="button" aria-label="Close" style="float: right;" (click)="modalRef.hide(template)" >
+          <span aria-hidden="true" >&times;</span>-->
+
+    </div>
+
+    <div class="modal-body">
+
+        NAME : <input type="text" class="form-control" #a><br> DESCRIPTION : <input type="text" class="form-control" #b><br>
+    </div>
+
+    <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addClass(a.value,b.value); a.value='' ;b.value='';modalRef.hide()"> Save </button>
+
+
+    </div>
+
+</ng-template>
+
+
+<ng-template #template2>
+    <div id="id01" class="modal-header">
+
+        <h3 class="modal-title pull-left">Create New Class</h3>
+        <span (click)="modalRef.hide()" class="w3-button w3-display-topright">&times;</span>
+        <!--  <button type="button" aria-label="Close" style="float: right;" (click)="modalRef.hide(template)" >
+          <span aria-hidden="true" >&times;</span>-->
+
+    </div>
+
+    <div class="modal-body">
+
+        Classe Code : <input type="text" class="form-control" #a> <br>
+    </div>
+
+    <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addStudent(a.value); a.value='' ;modalRef.hide()"> Save </button>
+
+
+    </div>
+
+</ng-template>

@@ -1,0 +1,122 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default text-left">
+            <div class="panel-body">
+                <app-upload></app-upload>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ul class="list-group">
+    <div *ngFor="let pubs of filteredPub">
+        <div *ngFor="let us of Users">
+
+            <li class="list-group-item" *ngIf="us.id==pubs.idUser">
+
+                <div class="panel panel-default">
+                    <div class=" text-md-left" style="margin-left: 10px;margin-top: 5px;">
+                        {{pubs.date | date:'fullDate'}}, {{pubs.date | date:'shortTime'}}
+                        <span class="btn" style="float: right ;" (click)="deletePublication(pubs.id)" *ngIf="checkRole(pubs.id)"> X</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="detailBox">
+
+                                <div class="commentBox">
+
+
+                                    <div class="col-sm-3">
+                                        <div class="well">
+                                            <img src="favicon.ico" class="img-circle" height="55" width="55" alt="Avatar">
+                                            <p> {{us.login}} </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="well">
+                                            <h5>this is the publication number : {{pubs.id }} </h5>
+                                            <p> {{pubs.contenus}} kas;ldkl;ask sa;lkd l;ask d;lkas;l k;ldaks ;lkdas;lk d;lask dl; asd;laskd;lk a;slkdl; aks;l dk;lask ;ldk;lak s;lk ;lask;l dk;lask ;dk;lask d;lka;l k;laskd;lkas;lk ;ldkas;l k </p>
+                                        </div>
+                                    </div>
+
+                                    <p class="taskDescription">...</p>
+
+                                    <ul style="text-align: left;">
+                                        <div *ngFor="let fiile of listeFiles">
+
+                                            <li *ngIf="pubs.id==fiile.idPublication">
+                                                <a (click)="downLoadFiles(fiile)"> {{fiile.path.split("_")[1]}}</a>
+                                            </li>
+
+                                        </div>
+
+                                    </ul>
+                                </div>
+
+                                <div class="actionBox">
+                                    <form class="form-inline" role="form">
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" placeholder="Your comments" #cmntt />
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-default" (click)="addComment(pubs.id,cmntt.value); cmntt.value=''">Add</button>
+                                        </div>
+                                    </form>
+                                    <ul class="commentList">
+                                        <li class="row" *ngFor="let cmnt of comments">
+
+                                            <div class="commenterImage " *ngIf="cmnt.idPublication===pubs.id">
+                                                <img src="http://placekitten.com/50/50" />
+                                            </div>
+                                            <div class="commentText col-10" *ngIf="cmnt.idPublication===pubs.id">
+                                                <div style="text-align: left;">
+                                                    <textarea style=" border: none;
+                                                    overflow: auto;
+                                                    outline: none;
+                                                
+                                                    -webkit-box-shadow: none;
+                                                    -moz-box-shadow: none;
+                                                    box-shadow: none;
+                                                
+                                                    resize: none;" cols="50" rows="2" [(ngModel)]="cmnt.contenus" [readonly]="editAttr" #newcmnt> {{cmnt.contenus}}</textarea>
+                                                </div>
+                                                <!---->
+                                                <span class="date sub-text">on
+                                                    {{cmnt.date | date:'mediumDate'}}</span>
+                                            </div>
+                                            <div class="commentText col-1" *ngIf="cmnt.idPublication===pubs.id">
+                                                <span class="btn  fa fa-pencil" (click)="editComment(cmnt)" *ngIf="cmnt.idPublication===pubs.id"></span>
+                                                <span class="btn commentText" *ngIf="cmnt.idPublication===pubs.id" (click)="deleteComment(cmnt.id)"> X</span>
+
+                                            </div>
+
+
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </li>
+
+
+        </div>
+    </div>
+
+</ul>

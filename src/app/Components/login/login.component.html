@@ -1,0 +1,125 @@
+<body class="back_image">
+
+    <br>
+    <br>
+    <br>
+
+    <div class="login-wrap">
+
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label> ||
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"> Sign Up</label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <label style="color: red;" *ngIf="isError">{{errorMessage}}</label>
+                    <!------------------------------------------------------------------------------------------------------------------->
+                    <!------------------------------------------------------------------------------------------------------------------->
+                    <!------------------------------------------------------------------------------------------------------------------->
+                    <!------------------------------------------------------------------------------------------------------------------->
+                    <!------------------------------------------------------------------------------------------------------------------->
+                    <!------------------------------------------------------------------------------------------------------------------->
+                    <!------------------------------------------------------------------------------------------------------------------->
+                    <!------------------------------------------------------------------------------------------------------------------->
+                    <!------------------------------------------------------------------------------------------------------------------->
+                    <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+
+                        <div class="group">
+                            <label for="user" class="label ">Username</label>
+                            <input id="user" formControlName="email" type="text" class="input" style="outline: none">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="pass" type="password" formControlName="password" class="input" style="outline: none" data-type="password">
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" [disabled]="disabled()" class="button" value="Sign In">
+                        </div>
+                    </form>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#forgot">Forgot Password?</a>
+                    </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------------------->
+
+
+                <div class="sign-up-htm">
+                    <form [formGroup]="registerForm" (ngSubmit)="register()">
+                        <div class="group">
+                            <label for="user" class="label">Full Name</label>
+                            <input id="user" formControlName="name" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Username</label>
+                            <input id="user" formControlName="login" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Role</label>
+                            <select id="role" formControlName="role" class="input" name="role">
+                        <option style="color: black;" value="Student" >Student</option>
+                        <option style="color: black;"value="Professor">Professor</option>
+                      </select>
+                        </div>
+
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="pass" type="password" formControlName="password" style="outline: none" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Repeat Password</label>
+                            <input id="pass" type="password" style="outline: none" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Email Address</label>
+                            <input id="pass" type="text" formControlName="email" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Phone</label>
+                            <input id="pass" formControlName="phone" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign Up">
+                        </div>
+                    </form>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a> <label for="tab-1">Already Member?</label></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</body>
